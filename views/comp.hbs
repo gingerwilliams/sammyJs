@@ -1,0 +1,113 @@
+<div id="component">
+    {{!-- Top Banner --}}
+    <div class="kss-style banner banner_position">
+        <div class="banner_header banner__comp-bg">
+            <div class="banner_box">
+                <button class="button banner_share sharethis-inline-share-buttons" onclick="sharethis()">
+				    <span class="button_text">Share this Page</span>
+				</button>
+                <div class="popover_wrap">
+                    <div id="popover" class="popover popover_box flag__top-right banner_sharethis-modal theme_white">
+                        <div class="popover_dialog">
+                            <button class="popover_close" data-dismiss="modal" aria-hidden="true"></button>
+                            <div class="popover_content">
+                                <div class="popover_body ">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="kss-title kss-title--level-2 banner_title">
+                    <a class="banner_link">{{header}}</a>
+                </h2>
+                <div class="banner_description text-body__normal">
+                    <p>{{{description}}}</p>
+                </div>
+
+                {{!--<div class="share-this-modal"></div> --}}
+            </div>
+        </div>
+    </div>
+
+    {{!-- Component Content --}}
+    <div class="onyx-module_box content-block theme_white">
+        <div class="tab tab_box">
+            <ul class="tab_list">
+                <li class="tab_list-item"><a id="Overview" class="tab_link tab__active" href="javascript:toggleTabs('Overview');">Overview</a></li>
+                <li class="tab_list-item"><a id="Styles" class="tab_link" href="javascript:toggleTabs('Styles');">Styles</a></li>
+            </ul>
+        </div>
+
+        {{!-- OVERVIEW TAB BODY --}}
+        <div data-name="Overview" class="tab-body tab-body__active">
+            <div class="row-large">
+                {{!-- THEME SELECTION MOBILE --}}
+                <div class=" col col-msm-12 col-dsm-3 theme_white margin-stack_l hidden-dsm">
+                    <h4 class="text-heading-4 text-heading-4__light margin_header-l">Select Theme</h4>
+                    <section>
+                        <div class="button-group button-group_box col-msm-12">
+                            <button data-theme="theme_white" class="theme-state button-group_button button-group_first button__center">
+									<span class="button_text">Default Theme</span>
+							</button>
+                            <button data-theme="theme_blue" class="theme-state button-group_button button__center">
+									<span class="button_text ">Blue Theme</span>
+							</button>
+                            <button data-theme="theme_gray" class="theme-state button-group_button button-group_last button__center">
+									<span class="button_text ">Gray Theme</span>
+							</button>
+                        </div>
+                    </section>
+
+                    <section id="rightnavmobile">
+
+                    </section>
+                </div>
+
+                {{!-- OVERVIEW TAB CONTENT BODY --}}
+                <div class="col-msm-12 col">
+                    <div class="kss-modifier__wrapper onyx-module_overview">
+                        <div class="kss-modifier__example demo-only theme_white">
+                            <p>{{{markup}}}</p>
+                        </div>
+                        <div class="markup-container">
+                            <button class="clipboard" data-clipboard-action="copy" data-clipboard-target="ol.linenums"></button>
+                            <pre class="prettyprint linenums lang-html">
+                                <code class="markup" data-language="html">
+                                    {{markup}}
+                                </code>
+                            </pre>
+                            <button class="place"><span class="button_text">Show More</span><span class="button_icon button__right lnr lnr-plus"></span></button>
+                        </div>
+
+                    </div>
+                </div>
+                {{!-- THEME SELECTION DESKTOP --}}
+                <div class="col-dsm-3 col hidden-msm" style="display: none">
+                    <h4 class="text-heading-4 text-heading-4__light margin_header-l">Select Theme</h4>
+                    <section>
+                        <ul class="unordered-list-nobullet margin_body">
+                            <li><a class="theme-state" data-theme="theme_white">Default Theme</a></li>
+                            <li><a class="theme-state" data-theme="theme_blue">Blue Theme</a></li>
+                            <li><a class="theme-state" data-theme="theme_gray">Gray Theme</a></li>
+                        </ul>
+                    </section>
+                    <section id="rightnav">
+
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        {{!-- STYLES TAB BODY --}}
+        <div data-name="Styles" class="tab-body">
+            <pre class="prettyprint linenums lang-html"><code id="cssGuide" data-language="html"></code></pre>
+        </div>
+
+        <div class="kss-source kss-style">
+            <p>Source: <span id="classFile">{{source}}</span></p>
+        </div>
+
+    </div>
+</div>

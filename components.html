@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="https://d3suxcfbwxsd3j.cloudfront.net/css/custom-onyx.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a></a></li>
+        </ul>
+        <ul id="comp-nav">
+        </ul>
+    </nav>
+    <div id="component">
+    </div>
+    <div id="footer">
+    </div>
+    
+
+    <script id="nav-template" type="text/x-handlebars-template">​ 
+        {{#each sections}}
+            <!-- partial template here -->
+            <li><a href="components.html?id={{@index}}" class="button show-more">{{header}}</a></li>
+        {{/each}}
+    </script>
+
+    
+    <script id="component-template" type="text/x-handlebars-template">
+        <h1>{{header}}</h1>
+
+        <div>{{{markup}}}</div>
+        <div>{{markup}}</div>
+        <button class="button show-more">show more</button>
+    </script>
+    
+    <script type="text/javascript" src="handlebars-v4.0.11.js"></script>​
+    <script type="text/javascript" src="handlebars.runtime-v2.0.0.js"></script>​
+    <script type="text/javascript" src="index.js"></script>​
+
+    <script>
+        $(document).ready(function(){
+            var nav = document.getElementById("nav-template").innerHTML;
+            var compiledNavTemplate = Handlebars.compile(nav);
+            var componentId = getParameterByName("id");
+
+            var componentTemplate = document.getElementById("component-template").innerHTML;
+            var compiledComponentTemplate = Handlebars.compile(componentTemplate);
+            
+            $.getJSON("data.json", function(data){
+                
+                document.getElementById("comp-nav").innerHTML = compiledNavTemplate(data);
+                document.getElementById("component").innerHTML = compiledComponentTemplate(data.sections[componentId]);
+            }); 
+        });    
+    </script>
+</body>
+
+</html>

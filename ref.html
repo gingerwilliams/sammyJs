@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link type="text/css" rel="stylesheet" href="https://d3suxcfbwxsd3j.cloudfront.net/css/custom-onyx.css"> -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <title>Handlebars Reference</title>
+</head>
+
+<body>
+
+    <navigation>Nav</navigation>
+    <div id="test">
+        <ul id="list">
+
+        </ul>
+    </div>
+    <script id="list-template" type="text/x-handlebars-template">​ 
+        {{#each sections}}
+        <li>
+            <p>{{#toLower}}{{header}}{{/toLower}}</p>
+            {{#if number}}
+            <p>{{formatPhoneNumber number}}</p>
+            {{/if}}
+            {{formatName header referenceNumber}}
+            {{#with source}}
+                {{#makeBold}}<p>{{filename}}</p>{{/makeBold}}
+                <p>{{path}}</p>
+            {{/with}}
+            <div>{{{markup}}}</div>
+            <div>{{markup}}</div>
+            <a href="components.html?id={{@index}}" class="button show-more">{{header}}</a>
+            
+            <!-- <p>Description: {{sections.description}}</p>
+            {{#if sections.source.filename}}<p>Location: {{source.filename}}</p>
+                {{else}}no source file
+            {{/if}}
+            {{#unless location}}no source file{{/unless}} -->
+        </li>
+        {{/each}}
+
+        
+    </script>
+    <!-- <script type="text/javascript" src="handlebars-v4.0.11.js"></script>​
+    <script type="text/javascript" src="handlebars.runtime-v2.0.0.js"></script>​
+    <script type="text/javascript" src="index.js"></script>​ -->
+
+
+
+
+</body>
+
+</html>
