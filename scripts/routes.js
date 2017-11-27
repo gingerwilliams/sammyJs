@@ -2,6 +2,16 @@ var app = $.sammy('#main', function () {
   // include the plugin and alias handlebars() to hb()
   this.use('Handlebars', 'hbs');
 
+  function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
   this.get('#/hello:name', function () {
     // set local vars
     this.title = 'Hello!'
@@ -21,71 +31,19 @@ var app = $.sammy('#main', function () {
     this.partial('views/deliverables.hbs');
   });
 
-  this.get('#/yo', function () {
-    console.log('Yo yo yo');
-  });
-
-  this.get('#/components/:id', function (context) {
-    this.load('data-origin.json')
-      .then(function (items) {
-        console.log(items.sections);
-      });
-  });
-
-  // this.get('#/hello/:name/to/:friend', function (context) {
-  //   // fetch handlebars-partial first
-  //   this.load('views/mypartial.hbs')
-  //     .then(function (partial) {
-  //       // set local vars
-  //       context.partials = { hello_friend: partial };
-  //       context.name = context.params.name;
-  //       context.friend = context.params.friend;
-
-  //       // render the template and pass it through handlebars
-  //       context.partial('views/mytemplate.hbs');
-      
-
-  //   // this.load('data-origin.json')
-  //   //     .then(function(items, partial){
-
-
-  //   //       $.each(items.sections, function(i, section){
-  //   //         context.partial('./views/comp.hbs', {
-  //   //         })
-  //   //         id = i;
-  //   //         // source: this.header
-  //   //         // console.log(id);
-  //   //         // console.log(this.source);
-  //   //         console.log(this.header);
-  //   //         // console.log(section);
-  //   //         // console.log(i);
-
-  //   //         // description:
-  //   //         // markup:
-  //   //         // console.log(header);
-  //   //       });
-
-  //     });  
-
-  //   });
-
-  // });
-
-  this.get('#/hello', function (context) {
+  this.get('#/component/:id', function (context) {
     // fetch handlebars-partial first
     this.load('data-origin.json')
       .then(function (items, partial) {
-        $.each(items.sections, function(i, section){
-          
-          context.name = "Ginger";
-          context.friend = "Anna";
-          context.header = section.header;
-          
-        });
-        // set local vars
-        // context.partials = { hello_friend: partial };
-        // context.name = context.params.name;
-        // context.friend = context.params.friend;
+        const secs = items.sections;
+        const url = document.location.href;
+        var key = url.substring(url.lastIndexOf(":") + 1);
+
+        // const key = this.getAttribute('data-key');
+        context.header = items.sections[key].header;
+        context.description = items.sections[key].description;
+        context.markup = items.sections[key].markup;
+        context.source = items.sections[key].header;
 
         // render the template and pass it through handlebars
         context.partial('views/comp.hbs');
@@ -94,6 +52,7 @@ var app = $.sammy('#main', function () {
     });
 
   });
+  ///////////
 
   $(function () {
     app.run()
