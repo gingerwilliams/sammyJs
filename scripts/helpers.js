@@ -1,28 +1,63 @@
-console.log('helper!');
 
-const endpoint = '../data-origin.json';
+// const exphbs = require('express-handlebars');
+// const handlebars = require('handlebars');
+// // const helpers = require('handlebars-helpers');
 
-secs = []
+// const dataFile = require('./builder/data.json');
+// // console.log(dataFile.sections);
 
-fetch(endpoint)
-    .then(response => response.json())
-    .then(data => {
-        secs.push(...data.sections);
-        // console.log(secs)
-        const navItems = secs.map((sec, index) => {
-            // return sec.header;
-            // console.log(index);
-            const comp = document.querySelector(".components");
-            const mb = document.querySelector(".markup-blocks");
-            const ref = sec.reference;
-           
-            if(ref.includes("Components") === true){
-                comp.innerHTML += '<li class="navigation_menu-item"><a class="navigation_menu-link" data-key="' + index + '" href="#/component/:' + index + '">' + sec.header + '</a></li>';
-            }
+// const data = dataFile.sections;
 
-            if(ref.includes("Markup Blocks") === true){
-                mb.innerHTML += '<li class="navigation_menu-item"><a class="navigation_menu-link" data-key="' + index + '" href="#/markupblocks/:' + index + '">' + sec.header + '</a></li>';
-            }
+// //Console Code Testing Area
+// var components = "Components";
+// for(var i=0; i < data.length; i++ ){
+//     var id = data.indexOf(data[i]);
+//     var ref = data[i].reference;
+//     var link = ref.substr(ref.indexOf('.')+1);
+
+//     if(ref.includes(components) === true){
+//         // console.log(link);
+//         // console.log(id);
+
+//     }
+// }
+
+// //Console Code Testing Area End
+
+// handlebars.registerHelper( "helpername", function ( ){
+//     return 'FOO!'; 
+// });
+
+// handlebars.registerHelper("printComponents", function(block) {
+//     var components = "Components";
+//     var item = '<div>';
+
+//     for(var i=0; i < data.length; i++ ){
+//         var id = data.indexOf(data[i]);
+//         var ref = data[i].reference;
+//         var link = ref.substr(ref.indexOf('.')+1);
+        
+//         if(ref.includes(components) === true){
             
-        });
-    });
+//             item += '<li class="navigation_menu-item"><a class="navigation_menu-link" href="/components/' + id + '">' + link + '</a></li>';
+//         }
+//     }
+//     return item += '</div>';
+// });
+
+// handlebars.registerHelper("printMarkup", function(block) {
+//     var markupblocks = "Markup Blocks";
+//     var item = '<div>';
+
+//     for(var i=0; i < data.length; i++ ){
+//         var id = data.indexOf(data[i]);
+//         var ref = data[i].reference;
+//         var link = ref.substr(ref.indexOf('.')+1);
+        
+//         if(ref.includes(markupblocks) === true){
+            
+//             item += '<li class="navigation_menu-item"><a class="navigation_menu-link" href="/markupblocks/' + id + '">' + link + '</a></li>';
+//         }
+//     }
+//     return item += '</div>';
+// });

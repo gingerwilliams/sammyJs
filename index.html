@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://designsystem.newellbrands.com/css/NB-COM.css">
+    <!-- <link rel="stylesheet" href="https://designsystem.newellbrands.com/css/NB-COM.css"> -->
+    <link rel="stylesheet" href="css/NB-COM.css">
     <link rel="stylesheet" href="https://designsystem.newellbrands.com/css/custom-onyx.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,7 +34,7 @@
                     </li>
                     <li class="navigation_menu-item">
                         <a class="navigation_menu-link has-subnav">Components</a>
-                        <ul class="navigation_two-tier theme_lt-blue components" style="display:block">
+                        <ul class="navigation_two-tier theme_lt-blue components" style="display:block;">
                             <!-- <div class="components"></div> -->
                             <!-- <li class="navigation_menu-item"><a class="navigation_menu-link" href="" class="navigation_menu-link">Overview</a></li>
                   {{#printComponents}}
@@ -41,11 +42,11 @@
                         </ul>
                     </li>
                     <li class="navigation_menu-item">
-                            <a class="navigation_menu-link has-subnav">Markup Blocks</a>
-                            <ul class="navigation_two-tier theme_lt-blue markup-blocks" style="display:block">
-                               
-                            </ul>
-                        </li>
+                        <a class="navigation_menu-link has-subnav">Markup Blocks</a>
+                        <ul class="navigation_two-tier theme_lt-blue markup-blocks" style="display:block;">
+
+                        </ul>
+                    </li>
 
                 </ul>
 
@@ -134,7 +135,13 @@
     </div>
 
 
-    <script type="text/javascript" charset="utf-8" src="scripts/helpers.js"></script>
+    <script type="text/javascript" charset="utf-8" src="scripts/nav.js"></script>
+    <script type="text/javascript" charset="utf-8" src="scripts/app.js"></script>
+    <script>
+        $(document).ready(function(){
+            navMenuClick();
+        });
+    </script>
 </body>
 
 </html>
